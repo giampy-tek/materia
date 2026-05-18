@@ -1,17 +1,16 @@
 export default function ContactSection() {
   return (
     <section
-      className="relative py-32 px-8 md:px-16 overflow-hidden"
+      className="relative py-16 md:py-32 px-8 md:px-16 overflow-hidden"
       style={{ background: "#060608" }}
     >
-      {/* Decorative blueprint background — schematic map */}
+      {/* Blueprint map — solo desktop */}
       <svg
         viewBox="0 0 1400 600"
         preserveAspectRatio="xMidYMid slice"
-        className="blueprint-svg absolute inset-0 w-full h-full pointer-events-none"
+        className="blueprint-svg absolute inset-0 w-full h-full pointer-events-none hidden md:block"
         aria-hidden="true"
       >
-        {/* Street grid */}
         <line x1="0" y1="200" x2="1400" y2="200" />
         <line x1="0" y1="350" x2="1400" y2="350" />
         <line x1="0" y1="480" x2="1400" y2="480" />
@@ -19,18 +18,15 @@ export default function ContactSection() {
         <line x1="500" y1="0" x2="500" y2="600" />
         <line x1="800" y1="0" x2="800" y2="600" />
         <line x1="1100" y1="0" x2="1100" y2="600" />
-        {/* Building footprints */}
         <rect x="240" y="220" width="220" height="110" strokeWidth="0.8" />
         <rect x="540" y="60" width="220" height="120" />
         <rect x="840" y="220" width="220" height="110" />
         <rect x="540" y="370" width="220" height="90" />
         <rect x="1140" y="70" width="200" height="100" />
         <rect x="30" y="60" width="140" height="120" />
-        {/* Studio marker */}
         <circle cx="800" cy="350" r="8" strokeWidth="1.2" stroke="rgba(120,160,255,0.5)" />
         <circle cx="800" cy="350" r="20" strokeWidth="0.4" stroke="rgba(120,160,255,0.2)" strokeDasharray="4,4" />
         <text className="title" x="820" y="346">STUDIO MATERIA</text>
-        {/* Diagonal street */}
         <line x1="0" y1="600" x2="500" y2="200" strokeWidth="0.4" />
         <line x1="900" y1="0" x2="1400" y2="400" strokeWidth="0.4" />
       </svg>
@@ -43,21 +39,22 @@ export default function ContactSection() {
           07 / 07 — CONTATTI
         </p>
 
+        {/* Email — su mobile va a capo, su desktop rimane grande */}
         <a
           href="mailto:studio@materia-architettura.it"
-          className="block font-serif italic leading-none transition-opacity duration-200 hover:opacity-60 cursor-pointer"
+          className="block font-serif italic leading-tight transition-opacity duration-200 hover:opacity-60 cursor-pointer break-all"
           style={{
-            fontSize: "clamp(1.8rem,4vw,5rem)",
+            fontSize: "clamp(1.6rem,4vw,5rem)",
             color: "#E8E8E0",
             textDecoration: "underline",
             textDecorationColor: "rgba(120,160,255,0.3)",
             textUnderlineOffset: "8px",
           }}
         >
-          studio@materia&#8209;architettura.it
+          studio@materia-architettura.it
         </a>
 
-        <div className="mt-16 flex flex-col md:flex-row gap-12 md:gap-24">
+        <div className="mt-12 md:mt-16 flex flex-col md:flex-row gap-10 md:gap-24">
           <div>
             <p
               className="font-mono text-xs tracking-widest mb-3"
@@ -85,7 +82,7 @@ export default function ContactSection() {
         </div>
 
         <div
-          className="mt-20 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+          className="mt-14 md:mt-20 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
           style={{ borderTop: "1px solid rgba(120,160,255,0.1)" }}
         >
           <p
