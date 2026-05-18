@@ -75,17 +75,6 @@ export default function ContactSection() {
               className="font-mono text-xs tracking-widest mb-3"
               style={{ color: "rgba(120,160,255,0.5)" }}
             >
-              TELEFONO
-            </p>
-            <p className="font-mono text-sm" style={{ color: "rgba(232,232,224,0.6)" }}>
-              +39 02 3456 7890
-            </p>
-          </div>
-          <div>
-            <p
-              className="font-mono text-xs tracking-widest mb-3"
-              style={{ color: "rgba(120,160,255,0.5)" }}
-            >
               ORARI
             </p>
             <p className="font-mono text-sm leading-relaxed" style={{ color: "rgba(232,232,224,0.6)" }}>
