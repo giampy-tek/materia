@@ -38,7 +38,8 @@ export default function ProjectSection({
   const reducedMotion = useReducedMotionFlag();
 
   useEffect(() => {
-    if (reducedMotion) {
+    const isMobile = window.innerWidth < 768;
+    if (reducedMotion || isMobile) {
       if (photoRef.current) photoRef.current.style.opacity = "1";
       if (infoRef.current) infoRef.current.style.opacity = "1";
       return;
