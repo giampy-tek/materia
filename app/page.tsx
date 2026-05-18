@@ -1,101 +1,158 @@
-import Image from "next/image";
+import BlueprintHero from "@/app/components/BlueprintHero";
+import BlueprintFilosofia from "@/app/components/BlueprintFilosofia";
+import ProjectSection from "@/app/components/ProjectSection";
+import BlueprintCasaLago from "@/app/components/blueprints/BlueprintCasaLago";
+import BlueprintPiazzaMercato from "@/app/components/blueprints/BlueprintPiazzaMercato";
+import BlueprintStudioMedico from "@/app/components/blueprints/BlueprintStudioMedico";
+import BlueprintVillaPrivata from "@/app/components/blueprints/BlueprintVillaPrivata";
+import TeamSection from "@/app/components/TeamSection";
+import ContactSection from "@/app/components/ContactSection";
+
+const projects = [
+  {
+    name: "Casa sul Lago",
+    type: "Residenziale",
+    city: "Varese",
+    year: 2023,
+    sqm: 380,
+    photo:
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1400&auto=format&fit=crop",
+    Blueprint: BlueprintCasaLago,
+  },
+  {
+    name: "Piazza Mercato",
+    type: "Pubblico",
+    city: "Milano",
+    year: 2022,
+    sqm: 1200,
+    photo:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&auto=format&fit=crop",
+    Blueprint: BlueprintPiazzaMercato,
+  },
+  {
+    name: "Studio Medico",
+    type: "Healthcare",
+    city: "Torino",
+    year: 2024,
+    sqm: 220,
+    photo:
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1400&auto=format&fit=crop",
+    Blueprint: BlueprintStudioMedico,
+  },
+  {
+    name: "Villa Privata",
+    type: "Residenziale",
+    city: "Como",
+    year: 2023,
+    sqm: 650,
+    photo:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1400&auto=format&fit=crop",
+    Blueprint: BlueprintVillaPrivata,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main>
+      <HeroSection />
+      <FilosofiaSection />
+      {projects.map((project, i) => (
+        <ProjectSection
+          key={project.name}
+          index={i}
+          name={project.name}
+          type={project.type}
+          city={project.city}
+          year={project.year}
+          sqm={project.sqm}
+          photo={project.photo}
+          Blueprint={project.Blueprint}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      ))}
+      <TeamSection />
+      <ContactSection />
+    </main>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+function HeroSection() {
+  return (
+    <section
+      className="relative h-screen overflow-hidden flex flex-col items-center justify-center"
+      style={{ background: "#060608" }}
+    >
+      <BlueprintHero />
+
+      <div className="relative z-10 text-center px-4">
+        <h1
+          className="font-serif font-black tracking-[0.3em] uppercase leading-none select-none"
+          style={{
+            fontSize: "clamp(3.5rem,12vw,14rem)",
+            color: "#E8E8E0",
+            textShadow: "0 0 80px rgba(120,160,255,0.08)",
+          }}
+        >
+          MATERIA
+        </h1>
+        <p
+          className="font-sans font-light tracking-[0.25em] uppercase mt-6"
+          style={{
+            fontSize: "clamp(0.65rem,1.2vw,1rem)",
+            color: "rgba(232,232,224,0.45)",
+          }}
+        >
+          Architettura che resiste al tempo.
+        </p>
+      </div>
+
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style={{ color: "rgba(120,160,255,0.35)" }}
+        aria-hidden="true"
+      >
+        <span className="font-mono text-[10px] tracking-widest uppercase">Scorri</span>
+        <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+          <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" strokeWidth="0.8" />
+          <rect x="7" y="5" width="2" height="5" rx="1" fill="currentColor" />
+        </svg>
+      </div>
+    </section>
+  );
+}
+
+function FilosofiaSection() {
+  return (
+    <section
+      className="min-h-[60vh] flex items-center"
+      style={{ background: "#060608" }}
+    >
+      <div className="w-full max-w-screen-xl mx-auto px-8 md:px-16 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p
+            className="font-serif italic leading-tight"
+            style={{
+              fontSize: "clamp(1.8rem,4vw,5rem)",
+              color: "#E8E8E0",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            &ldquo;Costruiamo per chi verrà dopo di noi.&rdquo;
+          </p>
+          <div
+            className="mt-8 h-px w-24"
+            style={{ background: "rgba(120,160,255,0.3)" }}
+          />
+          <p
+            className="font-mono text-xs tracking-widest mt-4"
+            style={{ color: "rgba(120,160,255,0.5)" }}
           >
-            Read our docs
-          </a>
+            MATERIA — STUDIO DI ARCHITETTURA
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="hidden md:block relative" style={{ height: "340px" }}>
+          <BlueprintFilosofia />
+        </div>
+      </div>
+    </section>
   );
 }
